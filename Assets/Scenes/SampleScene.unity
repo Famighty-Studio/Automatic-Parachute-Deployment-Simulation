@@ -366,8 +366,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.018189494, y: -0.0000000027419715, z: 4.9884125e-11, w: 0.9998346}
-  m_LocalPosition: {x: 0, y: 300, z: -50}
+  m_LocalRotation: {x: -0.018189494, y: -0.0000000018623373, z: -3.3880575e-11, w: 0.9998346}
+  m_LocalPosition: {x: 0, y: 10000, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -451,10 +451,9 @@ GameObject:
   m_Component:
   - component: {fileID: 402324174}
   - component: {fileID: 402324176}
-  - component: {fileID: 402324175}
   - component: {fileID: 402324173}
   - component: {fileID: 402324172}
-  - component: {fileID: 402324171}
+  - component: {fileID: 402324177}
   m_Layer: 0
   m_Name: Load with Parachute
   m_TagString: Untagged
@@ -462,20 +461,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &402324171
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402324169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &402324172
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -534,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402324169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 300, z: 0}
+  m_LocalPosition: {x: 0, y: 10000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -543,22 +528,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &402324175
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402324169}
-  serializedVersion: 2
-  m_Mass: 60
-  m_Drag: 0.74
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &402324176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,15 +540,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c661bf03c65e1844b0d812b8a549f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 60
-  parachuteSurfaceArea: 50.27
-  loadSurfaceArea: 0.78
+  mass: 75
+  parachuteSurfaceArea: 56.31946
+  loadSurfaceArea: 0.7854
   characteristicLength: 4
-  parachuteDragCoefficient: 1.4
+  parachuteDragCoefficient: 1.4335004
   loadDragCoefficient: 0.74
   isParachuteOpen: 0
   gravity: 9.81
-  safeTimeToDeploy: 30
+  autoDeploymentParameter: 0
+  safealtitudeToDeploy: 2500
+  safeImpactForceToDeploy: 20
+  safeTimeToDeploy: 10
+  autoCalculateSafetyDeployment: 0
   localPressure: 0
   canopyFillConstant: 4
   decellerationExponent: 0.85
@@ -595,13 +568,32 @@ MonoBehaviour:
   weight: 0
   drag: 0
   timeLeftBeforeGrounded: 0
+  maximumImpactForce: 0
   checkTerminalVelocity: 1
   printDragToConsole: 1
-  printWeightToConsole: 1
+  printWeightToConsole: 0
   parachuteTransform: {fileID: 1534636400}
   parachuteBehaviorComponent: {fileID: 1534636407}
   parachuteMesh: {fileID: 1534636403}
-  rigidbodyComponent: {fileID: 402324175}
+  rigidbodyComponent: {fileID: 402324177}
+--- !u!143 &402324177
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402324169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5000001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677088428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 300, z: -50}
+  m_LocalPosition: {x: 0, y: 10000, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1101,7 +1093,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &830772142
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1118,7 +1110,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!183 &830772147
 Cloth:
   m_ObjectHideFlags: 0
@@ -24233,7 +24225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1534636402
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -24250,7 +24242,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!137 &1534636403 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -3887185075125053422, guid: c066f8ca17483fd458d48fdf55ac562c,
@@ -46810,7 +46802,7 @@ Cloth:
   - maxDistance: 3.4028235e+38
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders:
-  - {fileID: 402324171}
+  - {fileID: 0}
   - {fileID: 1918045314}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0.1
