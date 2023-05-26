@@ -277,51 +277,31 @@ public class Analyzer : MonoBehaviour
 	private void OnGUI()
 	{
         GUILayout.BeginHorizontal();
-
         GUILayout.BeginVertical(); 
         GUILayout.Label(" Initial Altitude (m): ");
-
 		GUILayout.Label(" Altitude (m): ");
-
 		GUILayout.Label(" Velocity (m/s): ");
-
 		GUILayout.Label(" Terminal Velocity (m/s): ");
-
 		GUILayout.Label(" Inflation Time (s): ");
-
 		GUILayout.Label(" Time Before Grounded (s): ");
-
 		GUILayout.Label(" Weight (N): ");
-
 		GUILayout.Label(" Drag Force (N): ");
-
 		GUILayout.Label(" Maximum Impact Force (N): ");
-
 		if (inflated)
 		{
 			GUILayout.Label("Dynamic Pressure (Pa): ");
 		}
-
 		GUILayout.EndVertical();
 		GUILayout.BeginVertical();
 		GUILayout.Label(initialAltitude.ToString());
-
 		GUILayout.Label(transform.position.y.ToString());
-
 		GUILayout.Label(velocity.ToString());
-
 		GUILayout.Label(terminalVelocity.ToString());
-
 		GUILayout.Label(inflationTime.ToString());
-
 		GUILayout.Label(timeLeftBeforeGrounded.ToString());
-
 		GUILayout.Label((mass * gravity).ToString());
-
 		GUILayout.Label(drag.ToString());
-
 		GUILayout.Label(maximumImpactForce.ToString());
-
 		if (inflated)
 		{
 			GUILayout.Label(localPressure.ToString());
@@ -329,7 +309,6 @@ public class Analyzer : MonoBehaviour
 
 		GUILayout.EndVertical();
 		GUILayout.EndHorizontal();
-        
         GUILayout.BeginHorizontal();
         GUILayout.Label("Simulation Speed");
         if (GUILayout.Button("1x"))
@@ -348,7 +327,6 @@ public class Analyzer : MonoBehaviour
 		{
 			Time.timeScale = 10;
 		}
-
 		GUILayout.EndHorizontal();
 	}
 }
